@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify Clone – Frontend Only</title>
+    <link rel="stylesheet" href="spotify.css">
+</head>
+
+<body>
+    <div class="app" role="application" aria-label="Spotify Clone">
+        <div class="main">
+            <!-- SIDEBAR -->
+            <aside class="sidebar" aria-label="Sidebar">
+                <div class="logo" aria-label="App logo">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm5.4 17.44a.75.75 0 01-1.03.26 12.2 12.2 0 00-10.74-.8.75.75 0 11-.58-1.38 13.7 13.7 0 0112.06.9.75.75 0 01.29 1.02zm1.47-3.33a.94.94 0 01-1.3.34 15.54 15.54 0 00-13.8-1 .94.94 0 11-.67-1.75 17.44 17.44 0 0115.55 1.14.94.94 0 01.22 1.27zM19 10.3a1.13 1.13 0 01-1.56.41 18.8 18.8 0 00-15.7-1.1 1.12 1.12 0 01-.76-2.11 21.06 21.06 0 0117.6 1.25 1.13 1.13 0 01.42 1.55z" />
+                    </svg>
+                    <span>SpotiClone</span>
+                </div>
+
+                <nav class="nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="#" data-nav="home" aria-label="Home">🏠 Home</a></li>
+                        <li><a href="#" data-nav="search" aria-label="Search">🔎 Search</a></li>
+                        <li><a href="#" data-nav="library" aria-label="Your Library">📚 Your Library</a></li>
+                    </ul>
+                </nav>
+
+                <div class="library" aria-label="Playlists">
+                    <div class="section-title">Playlists</div>
+                    <ul id="playlistList">
+                        <li><a href="#">🎧 Coding Beats</a></li>
+                        <li><a href="#">🌧️ Lo-Fi Rain</a></li>
+                        <li><a href="#">🔥 Top Hits 2025</a></li>
+                        <li><a href="#">🧘 Focus Flow</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <span class="playlist-chip">＋ Create Playlist</span>
+                    <span class="playlist-chip">⬇️ Install App</span>
+                </div>
+            </aside>
+
+            <!-- CONTENT -->
+            <section class="content" aria-label="Content">
+                <div class="topbar">
+                    <button class="btn" id="backBtn" aria-label="Back">⟵</button>
+                    <button class="btn" id="fwdBtn" aria-label="Forward">⟶</button>
+                    <div class="search" role="search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M21.53 20.47l-3.66-3.66A8.48 8.48 0 0019 11.5 8.5 8.5 0 1010.5 20a8.48 8.48 0 005.31-1.13l3.66 3.66a.75.75 0 001.06-1.06zM3 11.5a7.5 7.5 0 1115 0a7.5 7.5 0 01-15 0" />
+                        </svg>
+                        <input id="searchInput" placeholder="What do you want to play?"
+                            aria-label="Search songs and artists" />
+                    </div>
+                </div>
+
+                <div class="hero">
+                    <div class="hero-cover" aria-hidden="true"></div>
+                    <div>
+                        <p class="muted">Playlist</p>
+                        <h1 id="heroTitle">Coding Beats</h1>
+                        <p class="muted">Handpicked tracks to keep you in the flow.</p>
+                    </div>
+                </div>
+
+                <div class="shelf">
+                    <h2>Recently Played</h2>
+                    <div class="cards" id="recentGrid" aria-live="polite"></div>
+                </div>
+
+                <div class="shelf">
+                    <h2>Made for You</h2>
+                    <div class="cards" id="madeGrid"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PLAYER -->
+        <footer class="player" aria-label="Player">
+            <div class="track-mini">
+                <div class="pic" id="miniPic" aria-hidden="true"></div>
+                <div class="info">
+                    <div class="t" id="miniTitle">—</div>
+                    <div class="a" id="miniArtist">—</div>
+                </div>
+            </div>
+
+            <div class="controls" aria-label="Playback controls">
+                <div class="row">
+                    <button class="icon-btn" id="shuffleBtn" aria-label="Shuffle" title="Shuffle">🔀</button>
+                    <button class="icon-btn" id="prevBtn" aria-label="Previous" title="Previous">⏮️</button>
+                    <button class="play" id="playBtn" aria-label="Play/Pause" title="Play/Pause">▶️</button>
+                    <button class="icon-btn" id="nextBtn" aria-label="Next" title="Next">⏭️</button>
+                    <button class="icon-btn" id="repeatBtn" aria-label="Repeat" title="Repeat">🔁</button>
+                </div>
+                <div class="progress">
+                    <span class="time" id="curTime">0:00</span>
+                    <div class="bar" id="progressBar" aria-label="Seek bar" role="slider" aria-valuemin="0"
+                        aria-valuemax="100" aria-valuenow="0">
+                        <div class="fill" id="progressFill"></div>
+                        <div class="knob" id="progressKnob"></div>
+                    </div>
+                    <span class="time" id="durTime">0:00</span>
+                </div>
+            </div>
+
+            <div class="right">
+                <button class="icon-btn" id="likeBtn" aria-label="Like" title="Like">❤️</button>
+                <div class="vol" aria-label="Volume">
+                    <span id="muteToggle" title="Mute">🔊</span>
+                    <input type="range" id="volRange" min="0" max="100" value="80" aria-label="Volume" />
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="spotify.js"></script>
+</body>
+
+</html>
